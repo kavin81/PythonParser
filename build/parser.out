@@ -1,0 +1,2557 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CLASS
+    DEF
+    RETURN
+
+Grammar
+
+Rule 0     S' -> statements
+Rule 1     statements -> statement
+Rule 2     statements -> statements statement
+Rule 3     if_statement -> IF expression COLON statements elif_else_block
+Rule 4     list_items -> all_datatypes COMMA list_items
+Rule 5     list_items -> all_datatypes
+Rule 6     list_items -> empty
+Rule 7     empty -> <empty>
+Rule 8     elif_else_block -> ELIF expression COLON statements elif_else_block
+Rule 9     elif_else_block -> ELSE COLON statements
+Rule 10    elif_else_block -> empty
+Rule 11    statement -> data_declaration
+Rule 12    statement -> expression
+Rule 13    statement -> if_statement
+Rule 14    kv_list_items -> kv COMMA kv_list_items
+Rule 15    kv_list_items -> kv
+Rule 16    kv_list_items -> empty
+Rule 17    data_declaration -> IDENTIFIER EQUALS expression
+Rule 18    expression -> IDENTIFIER
+Rule 19    expression -> all_datatypes
+Rule 20    expression -> comparison_expression
+Rule 21    kv -> STRING COLON all_datatypes
+Rule 22    kv -> INT COLON all_datatypes
+Rule 23    comparison_expression -> expression GT expression
+Rule 24    comparison_expression -> expression LT expression
+Rule 25    comparison_expression -> expression EQEQ expression
+Rule 26    comparison_expression -> expression NEQ expression
+Rule 27    comparison_expression -> expression GE expression
+Rule 28    comparison_expression -> expression LE expression
+Rule 29    list -> LBRACKET list_items RBRACKET
+Rule 30    tuple -> LPAREN list_items RPAREN
+Rule 31    set -> LBRACE list_items RBRACE
+Rule 32    dict -> LBRACE kv_list_items RBRACE
+Rule 33    basic_datatype -> INT
+Rule 34    basic_datatype -> FLOAT
+Rule 35    basic_datatype -> STRING
+Rule 36    basic_datatype -> BOOL
+Rule 37    all_datatypes -> collection
+Rule 38    all_datatypes -> basic_datatype
+Rule 39    collection -> list
+Rule 40    collection -> tuple
+Rule 41    collection -> dict
+Rule 42    collection -> set
+Rule 43    typehint_type -> COLON TYPE_INT
+Rule 44    typehint_type -> TYPE_FLOAT
+Rule 45    typehint_type -> TYPE_STRING
+Rule 46    typehint_type -> TYPE_BOOL
+Rule 47    typehint_type -> TYPE_LIST
+Rule 48    typehint_type -> TYPE_TUPLE
+Rule 49    typehint_type -> TYPE_DICT
+Rule 50    typehint_type -> TYPE_SET
+Rule 51    typehint -> COLON typehint_type
+Rule 52    typehint -> empty
+
+Terminals, with rules where they appear
+
+BOOL                 : 36
+CLASS                : 
+COLON                : 3 8 9 21 22 43 51
+COMMA                : 4 14
+DEF                  : 
+ELIF                 : 8
+ELSE                 : 9
+EQEQ                 : 25
+EQUALS               : 17
+FLOAT                : 34
+GE                   : 27
+GT                   : 23
+IDENTIFIER           : 17 18
+IF                   : 3
+INT                  : 22 33
+LBRACE               : 31 32
+LBRACKET             : 29
+LE                   : 28
+LPAREN               : 30
+LT                   : 24
+NEQ                  : 26
+RBRACE               : 31 32
+RBRACKET             : 29
+RETURN               : 
+RPAREN               : 30
+STRING               : 21 35
+TYPE_BOOL            : 46
+TYPE_DICT            : 49
+TYPE_FLOAT           : 44
+TYPE_INT             : 43
+TYPE_LIST            : 47
+TYPE_SET             : 50
+TYPE_STRING          : 45
+TYPE_TUPLE           : 48
+error                : 
+
+Nonterminals, with rules where they appear
+
+all_datatypes        : 4 5 19 21 22
+basic_datatype       : 38
+collection           : 37
+comparison_expression : 20
+data_declaration     : 11
+dict                 : 41
+elif_else_block      : 3 8
+empty                : 6 10 16 52
+expression           : 3 8 12 17 23 23 24 24 25 25 26 26 27 27 28 28
+if_statement         : 13
+kv                   : 14 15
+kv_list_items        : 14 32
+list                 : 39
+list_items           : 4 29 30 31
+set                  : 42
+statement            : 1 2
+statements           : 2 3 8 9 0
+tuple                : 40
+typehint             : 
+typehint_type        : 51
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statements
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    statements                     shift and go to state 1
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 1
+
+    (0) S' -> statements .
+    (2) statements -> statements . statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    statement                      shift and go to state 23
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 2
+
+    (1) statements -> statement .
+
+    IDENTIFIER      reduce using rule 1 (statements -> statement .)
+    IF              reduce using rule 1 (statements -> statement .)
+    INT             reduce using rule 1 (statements -> statement .)
+    FLOAT           reduce using rule 1 (statements -> statement .)
+    STRING          reduce using rule 1 (statements -> statement .)
+    BOOL            reduce using rule 1 (statements -> statement .)
+    LBRACKET        reduce using rule 1 (statements -> statement .)
+    LPAREN          reduce using rule 1 (statements -> statement .)
+    LBRACE          reduce using rule 1 (statements -> statement .)
+    $end            reduce using rule 1 (statements -> statement .)
+    ELIF            reduce using rule 1 (statements -> statement .)
+    ELSE            reduce using rule 1 (statements -> statement .)
+
+
+state 3
+
+    (11) statement -> data_declaration .
+
+    IDENTIFIER      reduce using rule 11 (statement -> data_declaration .)
+    IF              reduce using rule 11 (statement -> data_declaration .)
+    INT             reduce using rule 11 (statement -> data_declaration .)
+    FLOAT           reduce using rule 11 (statement -> data_declaration .)
+    STRING          reduce using rule 11 (statement -> data_declaration .)
+    BOOL            reduce using rule 11 (statement -> data_declaration .)
+    LBRACKET        reduce using rule 11 (statement -> data_declaration .)
+    LPAREN          reduce using rule 11 (statement -> data_declaration .)
+    LBRACE          reduce using rule 11 (statement -> data_declaration .)
+    $end            reduce using rule 11 (statement -> data_declaration .)
+    ELIF            reduce using rule 11 (statement -> data_declaration .)
+    ELSE            reduce using rule 11 (statement -> data_declaration .)
+
+
+state 4
+
+    (12) statement -> expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+    IDENTIFIER      reduce using rule 12 (statement -> expression .)
+    IF              reduce using rule 12 (statement -> expression .)
+    INT             reduce using rule 12 (statement -> expression .)
+    FLOAT           reduce using rule 12 (statement -> expression .)
+    STRING          reduce using rule 12 (statement -> expression .)
+    BOOL            reduce using rule 12 (statement -> expression .)
+    LBRACKET        reduce using rule 12 (statement -> expression .)
+    LPAREN          reduce using rule 12 (statement -> expression .)
+    LBRACE          reduce using rule 12 (statement -> expression .)
+    $end            reduce using rule 12 (statement -> expression .)
+    ELIF            reduce using rule 12 (statement -> expression .)
+    ELSE            reduce using rule 12 (statement -> expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+
+state 5
+
+    (13) statement -> if_statement .
+
+    IDENTIFIER      reduce using rule 13 (statement -> if_statement .)
+    IF              reduce using rule 13 (statement -> if_statement .)
+    INT             reduce using rule 13 (statement -> if_statement .)
+    FLOAT           reduce using rule 13 (statement -> if_statement .)
+    STRING          reduce using rule 13 (statement -> if_statement .)
+    BOOL            reduce using rule 13 (statement -> if_statement .)
+    LBRACKET        reduce using rule 13 (statement -> if_statement .)
+    LPAREN          reduce using rule 13 (statement -> if_statement .)
+    LBRACE          reduce using rule 13 (statement -> if_statement .)
+    $end            reduce using rule 13 (statement -> if_statement .)
+    ELIF            reduce using rule 13 (statement -> if_statement .)
+    ELSE            reduce using rule 13 (statement -> if_statement .)
+
+
+state 6
+
+    (17) data_declaration -> IDENTIFIER . EQUALS expression
+    (18) expression -> IDENTIFIER .
+
+    EQUALS          shift and go to state 30
+    GT              reduce using rule 18 (expression -> IDENTIFIER .)
+    LT              reduce using rule 18 (expression -> IDENTIFIER .)
+    EQEQ            reduce using rule 18 (expression -> IDENTIFIER .)
+    NEQ             reduce using rule 18 (expression -> IDENTIFIER .)
+    GE              reduce using rule 18 (expression -> IDENTIFIER .)
+    LE              reduce using rule 18 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 18 (expression -> IDENTIFIER .)
+    IF              reduce using rule 18 (expression -> IDENTIFIER .)
+    INT             reduce using rule 18 (expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 18 (expression -> IDENTIFIER .)
+    STRING          reduce using rule 18 (expression -> IDENTIFIER .)
+    BOOL            reduce using rule 18 (expression -> IDENTIFIER .)
+    LBRACKET        reduce using rule 18 (expression -> IDENTIFIER .)
+    LPAREN          reduce using rule 18 (expression -> IDENTIFIER .)
+    LBRACE          reduce using rule 18 (expression -> IDENTIFIER .)
+    $end            reduce using rule 18 (expression -> IDENTIFIER .)
+    ELIF            reduce using rule 18 (expression -> IDENTIFIER .)
+    ELSE            reduce using rule 18 (expression -> IDENTIFIER .)
+
+
+state 7
+
+    (19) expression -> all_datatypes .
+
+    GT              reduce using rule 19 (expression -> all_datatypes .)
+    LT              reduce using rule 19 (expression -> all_datatypes .)
+    EQEQ            reduce using rule 19 (expression -> all_datatypes .)
+    NEQ             reduce using rule 19 (expression -> all_datatypes .)
+    GE              reduce using rule 19 (expression -> all_datatypes .)
+    LE              reduce using rule 19 (expression -> all_datatypes .)
+    IDENTIFIER      reduce using rule 19 (expression -> all_datatypes .)
+    IF              reduce using rule 19 (expression -> all_datatypes .)
+    INT             reduce using rule 19 (expression -> all_datatypes .)
+    FLOAT           reduce using rule 19 (expression -> all_datatypes .)
+    STRING          reduce using rule 19 (expression -> all_datatypes .)
+    BOOL            reduce using rule 19 (expression -> all_datatypes .)
+    LBRACKET        reduce using rule 19 (expression -> all_datatypes .)
+    LPAREN          reduce using rule 19 (expression -> all_datatypes .)
+    LBRACE          reduce using rule 19 (expression -> all_datatypes .)
+    $end            reduce using rule 19 (expression -> all_datatypes .)
+    COLON           reduce using rule 19 (expression -> all_datatypes .)
+    ELIF            reduce using rule 19 (expression -> all_datatypes .)
+    ELSE            reduce using rule 19 (expression -> all_datatypes .)
+
+
+state 8
+
+    (20) expression -> comparison_expression .
+
+    GT              reduce using rule 20 (expression -> comparison_expression .)
+    LT              reduce using rule 20 (expression -> comparison_expression .)
+    EQEQ            reduce using rule 20 (expression -> comparison_expression .)
+    NEQ             reduce using rule 20 (expression -> comparison_expression .)
+    GE              reduce using rule 20 (expression -> comparison_expression .)
+    LE              reduce using rule 20 (expression -> comparison_expression .)
+    IDENTIFIER      reduce using rule 20 (expression -> comparison_expression .)
+    IF              reduce using rule 20 (expression -> comparison_expression .)
+    INT             reduce using rule 20 (expression -> comparison_expression .)
+    FLOAT           reduce using rule 20 (expression -> comparison_expression .)
+    STRING          reduce using rule 20 (expression -> comparison_expression .)
+    BOOL            reduce using rule 20 (expression -> comparison_expression .)
+    LBRACKET        reduce using rule 20 (expression -> comparison_expression .)
+    LPAREN          reduce using rule 20 (expression -> comparison_expression .)
+    LBRACE          reduce using rule 20 (expression -> comparison_expression .)
+    $end            reduce using rule 20 (expression -> comparison_expression .)
+    COLON           reduce using rule 20 (expression -> comparison_expression .)
+    ELIF            reduce using rule 20 (expression -> comparison_expression .)
+    ELSE            reduce using rule 20 (expression -> comparison_expression .)
+
+
+state 9
+
+    (3) if_statement -> IF . expression COLON statements elif_else_block
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 31
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 10
+
+    (37) all_datatypes -> collection .
+
+    GT              reduce using rule 37 (all_datatypes -> collection .)
+    LT              reduce using rule 37 (all_datatypes -> collection .)
+    EQEQ            reduce using rule 37 (all_datatypes -> collection .)
+    NEQ             reduce using rule 37 (all_datatypes -> collection .)
+    GE              reduce using rule 37 (all_datatypes -> collection .)
+    LE              reduce using rule 37 (all_datatypes -> collection .)
+    IDENTIFIER      reduce using rule 37 (all_datatypes -> collection .)
+    IF              reduce using rule 37 (all_datatypes -> collection .)
+    INT             reduce using rule 37 (all_datatypes -> collection .)
+    FLOAT           reduce using rule 37 (all_datatypes -> collection .)
+    STRING          reduce using rule 37 (all_datatypes -> collection .)
+    BOOL            reduce using rule 37 (all_datatypes -> collection .)
+    LBRACKET        reduce using rule 37 (all_datatypes -> collection .)
+    LPAREN          reduce using rule 37 (all_datatypes -> collection .)
+    LBRACE          reduce using rule 37 (all_datatypes -> collection .)
+    $end            reduce using rule 37 (all_datatypes -> collection .)
+    COLON           reduce using rule 37 (all_datatypes -> collection .)
+    COMMA           reduce using rule 37 (all_datatypes -> collection .)
+    RBRACKET        reduce using rule 37 (all_datatypes -> collection .)
+    RPAREN          reduce using rule 37 (all_datatypes -> collection .)
+    RBRACE          reduce using rule 37 (all_datatypes -> collection .)
+    ELIF            reduce using rule 37 (all_datatypes -> collection .)
+    ELSE            reduce using rule 37 (all_datatypes -> collection .)
+
+
+state 11
+
+    (38) all_datatypes -> basic_datatype .
+
+    GT              reduce using rule 38 (all_datatypes -> basic_datatype .)
+    LT              reduce using rule 38 (all_datatypes -> basic_datatype .)
+    EQEQ            reduce using rule 38 (all_datatypes -> basic_datatype .)
+    NEQ             reduce using rule 38 (all_datatypes -> basic_datatype .)
+    GE              reduce using rule 38 (all_datatypes -> basic_datatype .)
+    LE              reduce using rule 38 (all_datatypes -> basic_datatype .)
+    IDENTIFIER      reduce using rule 38 (all_datatypes -> basic_datatype .)
+    IF              reduce using rule 38 (all_datatypes -> basic_datatype .)
+    INT             reduce using rule 38 (all_datatypes -> basic_datatype .)
+    FLOAT           reduce using rule 38 (all_datatypes -> basic_datatype .)
+    STRING          reduce using rule 38 (all_datatypes -> basic_datatype .)
+    BOOL            reduce using rule 38 (all_datatypes -> basic_datatype .)
+    LBRACKET        reduce using rule 38 (all_datatypes -> basic_datatype .)
+    LPAREN          reduce using rule 38 (all_datatypes -> basic_datatype .)
+    LBRACE          reduce using rule 38 (all_datatypes -> basic_datatype .)
+    $end            reduce using rule 38 (all_datatypes -> basic_datatype .)
+    COLON           reduce using rule 38 (all_datatypes -> basic_datatype .)
+    COMMA           reduce using rule 38 (all_datatypes -> basic_datatype .)
+    RBRACKET        reduce using rule 38 (all_datatypes -> basic_datatype .)
+    RPAREN          reduce using rule 38 (all_datatypes -> basic_datatype .)
+    RBRACE          reduce using rule 38 (all_datatypes -> basic_datatype .)
+    ELIF            reduce using rule 38 (all_datatypes -> basic_datatype .)
+    ELSE            reduce using rule 38 (all_datatypes -> basic_datatype .)
+
+
+state 12
+
+    (39) collection -> list .
+
+    GT              reduce using rule 39 (collection -> list .)
+    LT              reduce using rule 39 (collection -> list .)
+    EQEQ            reduce using rule 39 (collection -> list .)
+    NEQ             reduce using rule 39 (collection -> list .)
+    GE              reduce using rule 39 (collection -> list .)
+    LE              reduce using rule 39 (collection -> list .)
+    IDENTIFIER      reduce using rule 39 (collection -> list .)
+    IF              reduce using rule 39 (collection -> list .)
+    INT             reduce using rule 39 (collection -> list .)
+    FLOAT           reduce using rule 39 (collection -> list .)
+    STRING          reduce using rule 39 (collection -> list .)
+    BOOL            reduce using rule 39 (collection -> list .)
+    LBRACKET        reduce using rule 39 (collection -> list .)
+    LPAREN          reduce using rule 39 (collection -> list .)
+    LBRACE          reduce using rule 39 (collection -> list .)
+    $end            reduce using rule 39 (collection -> list .)
+    COLON           reduce using rule 39 (collection -> list .)
+    COMMA           reduce using rule 39 (collection -> list .)
+    RBRACKET        reduce using rule 39 (collection -> list .)
+    RPAREN          reduce using rule 39 (collection -> list .)
+    RBRACE          reduce using rule 39 (collection -> list .)
+    ELIF            reduce using rule 39 (collection -> list .)
+    ELSE            reduce using rule 39 (collection -> list .)
+
+
+state 13
+
+    (40) collection -> tuple .
+
+    GT              reduce using rule 40 (collection -> tuple .)
+    LT              reduce using rule 40 (collection -> tuple .)
+    EQEQ            reduce using rule 40 (collection -> tuple .)
+    NEQ             reduce using rule 40 (collection -> tuple .)
+    GE              reduce using rule 40 (collection -> tuple .)
+    LE              reduce using rule 40 (collection -> tuple .)
+    IDENTIFIER      reduce using rule 40 (collection -> tuple .)
+    IF              reduce using rule 40 (collection -> tuple .)
+    INT             reduce using rule 40 (collection -> tuple .)
+    FLOAT           reduce using rule 40 (collection -> tuple .)
+    STRING          reduce using rule 40 (collection -> tuple .)
+    BOOL            reduce using rule 40 (collection -> tuple .)
+    LBRACKET        reduce using rule 40 (collection -> tuple .)
+    LPAREN          reduce using rule 40 (collection -> tuple .)
+    LBRACE          reduce using rule 40 (collection -> tuple .)
+    $end            reduce using rule 40 (collection -> tuple .)
+    COLON           reduce using rule 40 (collection -> tuple .)
+    COMMA           reduce using rule 40 (collection -> tuple .)
+    RBRACKET        reduce using rule 40 (collection -> tuple .)
+    RPAREN          reduce using rule 40 (collection -> tuple .)
+    RBRACE          reduce using rule 40 (collection -> tuple .)
+    ELIF            reduce using rule 40 (collection -> tuple .)
+    ELSE            reduce using rule 40 (collection -> tuple .)
+
+
+state 14
+
+    (41) collection -> dict .
+
+    GT              reduce using rule 41 (collection -> dict .)
+    LT              reduce using rule 41 (collection -> dict .)
+    EQEQ            reduce using rule 41 (collection -> dict .)
+    NEQ             reduce using rule 41 (collection -> dict .)
+    GE              reduce using rule 41 (collection -> dict .)
+    LE              reduce using rule 41 (collection -> dict .)
+    IDENTIFIER      reduce using rule 41 (collection -> dict .)
+    IF              reduce using rule 41 (collection -> dict .)
+    INT             reduce using rule 41 (collection -> dict .)
+    FLOAT           reduce using rule 41 (collection -> dict .)
+    STRING          reduce using rule 41 (collection -> dict .)
+    BOOL            reduce using rule 41 (collection -> dict .)
+    LBRACKET        reduce using rule 41 (collection -> dict .)
+    LPAREN          reduce using rule 41 (collection -> dict .)
+    LBRACE          reduce using rule 41 (collection -> dict .)
+    $end            reduce using rule 41 (collection -> dict .)
+    COLON           reduce using rule 41 (collection -> dict .)
+    COMMA           reduce using rule 41 (collection -> dict .)
+    RBRACKET        reduce using rule 41 (collection -> dict .)
+    RPAREN          reduce using rule 41 (collection -> dict .)
+    RBRACE          reduce using rule 41 (collection -> dict .)
+    ELIF            reduce using rule 41 (collection -> dict .)
+    ELSE            reduce using rule 41 (collection -> dict .)
+
+
+state 15
+
+    (42) collection -> set .
+
+    GT              reduce using rule 42 (collection -> set .)
+    LT              reduce using rule 42 (collection -> set .)
+    EQEQ            reduce using rule 42 (collection -> set .)
+    NEQ             reduce using rule 42 (collection -> set .)
+    GE              reduce using rule 42 (collection -> set .)
+    LE              reduce using rule 42 (collection -> set .)
+    IDENTIFIER      reduce using rule 42 (collection -> set .)
+    IF              reduce using rule 42 (collection -> set .)
+    INT             reduce using rule 42 (collection -> set .)
+    FLOAT           reduce using rule 42 (collection -> set .)
+    STRING          reduce using rule 42 (collection -> set .)
+    BOOL            reduce using rule 42 (collection -> set .)
+    LBRACKET        reduce using rule 42 (collection -> set .)
+    LPAREN          reduce using rule 42 (collection -> set .)
+    LBRACE          reduce using rule 42 (collection -> set .)
+    $end            reduce using rule 42 (collection -> set .)
+    COLON           reduce using rule 42 (collection -> set .)
+    COMMA           reduce using rule 42 (collection -> set .)
+    RBRACKET        reduce using rule 42 (collection -> set .)
+    RPAREN          reduce using rule 42 (collection -> set .)
+    RBRACE          reduce using rule 42 (collection -> set .)
+    ELIF            reduce using rule 42 (collection -> set .)
+    ELSE            reduce using rule 42 (collection -> set .)
+
+
+state 16
+
+    (33) basic_datatype -> INT .
+
+    GT              reduce using rule 33 (basic_datatype -> INT .)
+    LT              reduce using rule 33 (basic_datatype -> INT .)
+    EQEQ            reduce using rule 33 (basic_datatype -> INT .)
+    NEQ             reduce using rule 33 (basic_datatype -> INT .)
+    GE              reduce using rule 33 (basic_datatype -> INT .)
+    LE              reduce using rule 33 (basic_datatype -> INT .)
+    IDENTIFIER      reduce using rule 33 (basic_datatype -> INT .)
+    IF              reduce using rule 33 (basic_datatype -> INT .)
+    INT             reduce using rule 33 (basic_datatype -> INT .)
+    FLOAT           reduce using rule 33 (basic_datatype -> INT .)
+    STRING          reduce using rule 33 (basic_datatype -> INT .)
+    BOOL            reduce using rule 33 (basic_datatype -> INT .)
+    LBRACKET        reduce using rule 33 (basic_datatype -> INT .)
+    LPAREN          reduce using rule 33 (basic_datatype -> INT .)
+    LBRACE          reduce using rule 33 (basic_datatype -> INT .)
+    $end            reduce using rule 33 (basic_datatype -> INT .)
+    COLON           reduce using rule 33 (basic_datatype -> INT .)
+    COMMA           reduce using rule 33 (basic_datatype -> INT .)
+    RBRACKET        reduce using rule 33 (basic_datatype -> INT .)
+    RPAREN          reduce using rule 33 (basic_datatype -> INT .)
+    ELIF            reduce using rule 33 (basic_datatype -> INT .)
+    ELSE            reduce using rule 33 (basic_datatype -> INT .)
+    RBRACE          reduce using rule 33 (basic_datatype -> INT .)
+
+
+state 17
+
+    (34) basic_datatype -> FLOAT .
+
+    GT              reduce using rule 34 (basic_datatype -> FLOAT .)
+    LT              reduce using rule 34 (basic_datatype -> FLOAT .)
+    EQEQ            reduce using rule 34 (basic_datatype -> FLOAT .)
+    NEQ             reduce using rule 34 (basic_datatype -> FLOAT .)
+    GE              reduce using rule 34 (basic_datatype -> FLOAT .)
+    LE              reduce using rule 34 (basic_datatype -> FLOAT .)
+    IDENTIFIER      reduce using rule 34 (basic_datatype -> FLOAT .)
+    IF              reduce using rule 34 (basic_datatype -> FLOAT .)
+    INT             reduce using rule 34 (basic_datatype -> FLOAT .)
+    FLOAT           reduce using rule 34 (basic_datatype -> FLOAT .)
+    STRING          reduce using rule 34 (basic_datatype -> FLOAT .)
+    BOOL            reduce using rule 34 (basic_datatype -> FLOAT .)
+    LBRACKET        reduce using rule 34 (basic_datatype -> FLOAT .)
+    LPAREN          reduce using rule 34 (basic_datatype -> FLOAT .)
+    LBRACE          reduce using rule 34 (basic_datatype -> FLOAT .)
+    $end            reduce using rule 34 (basic_datatype -> FLOAT .)
+    COLON           reduce using rule 34 (basic_datatype -> FLOAT .)
+    COMMA           reduce using rule 34 (basic_datatype -> FLOAT .)
+    RBRACKET        reduce using rule 34 (basic_datatype -> FLOAT .)
+    RPAREN          reduce using rule 34 (basic_datatype -> FLOAT .)
+    RBRACE          reduce using rule 34 (basic_datatype -> FLOAT .)
+    ELIF            reduce using rule 34 (basic_datatype -> FLOAT .)
+    ELSE            reduce using rule 34 (basic_datatype -> FLOAT .)
+
+
+state 18
+
+    (35) basic_datatype -> STRING .
+
+    GT              reduce using rule 35 (basic_datatype -> STRING .)
+    LT              reduce using rule 35 (basic_datatype -> STRING .)
+    EQEQ            reduce using rule 35 (basic_datatype -> STRING .)
+    NEQ             reduce using rule 35 (basic_datatype -> STRING .)
+    GE              reduce using rule 35 (basic_datatype -> STRING .)
+    LE              reduce using rule 35 (basic_datatype -> STRING .)
+    IDENTIFIER      reduce using rule 35 (basic_datatype -> STRING .)
+    IF              reduce using rule 35 (basic_datatype -> STRING .)
+    INT             reduce using rule 35 (basic_datatype -> STRING .)
+    FLOAT           reduce using rule 35 (basic_datatype -> STRING .)
+    STRING          reduce using rule 35 (basic_datatype -> STRING .)
+    BOOL            reduce using rule 35 (basic_datatype -> STRING .)
+    LBRACKET        reduce using rule 35 (basic_datatype -> STRING .)
+    LPAREN          reduce using rule 35 (basic_datatype -> STRING .)
+    LBRACE          reduce using rule 35 (basic_datatype -> STRING .)
+    $end            reduce using rule 35 (basic_datatype -> STRING .)
+    COLON           reduce using rule 35 (basic_datatype -> STRING .)
+    COMMA           reduce using rule 35 (basic_datatype -> STRING .)
+    RBRACKET        reduce using rule 35 (basic_datatype -> STRING .)
+    RPAREN          reduce using rule 35 (basic_datatype -> STRING .)
+    ELIF            reduce using rule 35 (basic_datatype -> STRING .)
+    ELSE            reduce using rule 35 (basic_datatype -> STRING .)
+    RBRACE          reduce using rule 35 (basic_datatype -> STRING .)
+
+
+state 19
+
+    (36) basic_datatype -> BOOL .
+
+    GT              reduce using rule 36 (basic_datatype -> BOOL .)
+    LT              reduce using rule 36 (basic_datatype -> BOOL .)
+    EQEQ            reduce using rule 36 (basic_datatype -> BOOL .)
+    NEQ             reduce using rule 36 (basic_datatype -> BOOL .)
+    GE              reduce using rule 36 (basic_datatype -> BOOL .)
+    LE              reduce using rule 36 (basic_datatype -> BOOL .)
+    IDENTIFIER      reduce using rule 36 (basic_datatype -> BOOL .)
+    IF              reduce using rule 36 (basic_datatype -> BOOL .)
+    INT             reduce using rule 36 (basic_datatype -> BOOL .)
+    FLOAT           reduce using rule 36 (basic_datatype -> BOOL .)
+    STRING          reduce using rule 36 (basic_datatype -> BOOL .)
+    BOOL            reduce using rule 36 (basic_datatype -> BOOL .)
+    LBRACKET        reduce using rule 36 (basic_datatype -> BOOL .)
+    LPAREN          reduce using rule 36 (basic_datatype -> BOOL .)
+    LBRACE          reduce using rule 36 (basic_datatype -> BOOL .)
+    $end            reduce using rule 36 (basic_datatype -> BOOL .)
+    COLON           reduce using rule 36 (basic_datatype -> BOOL .)
+    COMMA           reduce using rule 36 (basic_datatype -> BOOL .)
+    RBRACKET        reduce using rule 36 (basic_datatype -> BOOL .)
+    RPAREN          reduce using rule 36 (basic_datatype -> BOOL .)
+    RBRACE          reduce using rule 36 (basic_datatype -> BOOL .)
+    ELIF            reduce using rule 36 (basic_datatype -> BOOL .)
+    ELSE            reduce using rule 36 (basic_datatype -> BOOL .)
+
+
+state 20
+
+    (29) list -> LBRACKET . list_items RBRACKET
+    (4) list_items -> . all_datatypes COMMA list_items
+    (5) list_items -> . all_datatypes
+    (6) list_items -> . empty
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (7) empty -> .
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    RBRACKET        reduce using rule 7 (empty -> .)
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    list_items                     shift and go to state 33
+    all_datatypes                  shift and go to state 34
+    empty                          shift and go to state 35
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 21
+
+    (30) tuple -> LPAREN . list_items RPAREN
+    (4) list_items -> . all_datatypes COMMA list_items
+    (5) list_items -> . all_datatypes
+    (6) list_items -> . empty
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (7) empty -> .
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    RPAREN          reduce using rule 7 (empty -> .)
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    list_items                     shift and go to state 36
+    all_datatypes                  shift and go to state 34
+    empty                          shift and go to state 35
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 22
+
+    (32) dict -> LBRACE . kv_list_items RBRACE
+    (31) set -> LBRACE . list_items RBRACE
+    (14) kv_list_items -> . kv COMMA kv_list_items
+    (15) kv_list_items -> . kv
+    (16) kv_list_items -> . empty
+    (4) list_items -> . all_datatypes COMMA list_items
+    (5) list_items -> . all_datatypes
+    (6) list_items -> . empty
+    (21) kv -> . STRING COLON all_datatypes
+    (22) kv -> . INT COLON all_datatypes
+    (7) empty -> .
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    STRING          shift and go to state 41
+    INT             shift and go to state 42
+    RBRACE          reduce using rule 7 (empty -> .)
+    FLOAT           shift and go to state 17
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    kv_list_items                  shift and go to state 37
+    list_items                     shift and go to state 38
+    kv                             shift and go to state 39
+    empty                          shift and go to state 40
+    all_datatypes                  shift and go to state 34
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 23
+
+    (2) statements -> statements statement .
+
+    IDENTIFIER      reduce using rule 2 (statements -> statements statement .)
+    IF              reduce using rule 2 (statements -> statements statement .)
+    INT             reduce using rule 2 (statements -> statements statement .)
+    FLOAT           reduce using rule 2 (statements -> statements statement .)
+    STRING          reduce using rule 2 (statements -> statements statement .)
+    BOOL            reduce using rule 2 (statements -> statements statement .)
+    LBRACKET        reduce using rule 2 (statements -> statements statement .)
+    LPAREN          reduce using rule 2 (statements -> statements statement .)
+    LBRACE          reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    ELIF            reduce using rule 2 (statements -> statements statement .)
+    ELSE            reduce using rule 2 (statements -> statements statement .)
+
+
+state 24
+
+    (23) comparison_expression -> expression GT . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 43
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 25
+
+    (24) comparison_expression -> expression LT . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 44
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 26
+
+    (25) comparison_expression -> expression EQEQ . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 45
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 27
+
+    (26) comparison_expression -> expression NEQ . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 46
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 28
+
+    (27) comparison_expression -> expression GE . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 47
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 29
+
+    (28) comparison_expression -> expression LE . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 48
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 30
+
+    (17) data_declaration -> IDENTIFIER EQUALS . expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 49
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 31
+
+    (3) if_statement -> IF expression . COLON statements elif_else_block
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+    COLON           shift and go to state 50
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+
+state 32
+
+    (18) expression -> IDENTIFIER .
+
+    COLON           reduce using rule 18 (expression -> IDENTIFIER .)
+    GT              reduce using rule 18 (expression -> IDENTIFIER .)
+    LT              reduce using rule 18 (expression -> IDENTIFIER .)
+    EQEQ            reduce using rule 18 (expression -> IDENTIFIER .)
+    NEQ             reduce using rule 18 (expression -> IDENTIFIER .)
+    GE              reduce using rule 18 (expression -> IDENTIFIER .)
+    LE              reduce using rule 18 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 18 (expression -> IDENTIFIER .)
+    IF              reduce using rule 18 (expression -> IDENTIFIER .)
+    INT             reduce using rule 18 (expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 18 (expression -> IDENTIFIER .)
+    STRING          reduce using rule 18 (expression -> IDENTIFIER .)
+    BOOL            reduce using rule 18 (expression -> IDENTIFIER .)
+    LBRACKET        reduce using rule 18 (expression -> IDENTIFIER .)
+    LPAREN          reduce using rule 18 (expression -> IDENTIFIER .)
+    LBRACE          reduce using rule 18 (expression -> IDENTIFIER .)
+    $end            reduce using rule 18 (expression -> IDENTIFIER .)
+    ELIF            reduce using rule 18 (expression -> IDENTIFIER .)
+    ELSE            reduce using rule 18 (expression -> IDENTIFIER .)
+
+
+state 33
+
+    (29) list -> LBRACKET list_items . RBRACKET
+
+    RBRACKET        shift and go to state 51
+
+
+state 34
+
+    (4) list_items -> all_datatypes . COMMA list_items
+    (5) list_items -> all_datatypes .
+
+    COMMA           shift and go to state 52
+    RBRACKET        reduce using rule 5 (list_items -> all_datatypes .)
+    RPAREN          reduce using rule 5 (list_items -> all_datatypes .)
+    RBRACE          reduce using rule 5 (list_items -> all_datatypes .)
+
+
+state 35
+
+    (6) list_items -> empty .
+
+    RBRACKET        reduce using rule 6 (list_items -> empty .)
+    RPAREN          reduce using rule 6 (list_items -> empty .)
+    RBRACE          reduce using rule 6 (list_items -> empty .)
+
+
+state 36
+
+    (30) tuple -> LPAREN list_items . RPAREN
+
+    RPAREN          shift and go to state 53
+
+
+state 37
+
+    (32) dict -> LBRACE kv_list_items . RBRACE
+
+    RBRACE          shift and go to state 54
+
+
+state 38
+
+    (31) set -> LBRACE list_items . RBRACE
+
+    RBRACE          shift and go to state 55
+
+
+state 39
+
+    (14) kv_list_items -> kv . COMMA kv_list_items
+    (15) kv_list_items -> kv .
+
+    COMMA           shift and go to state 56
+    RBRACE          reduce using rule 15 (kv_list_items -> kv .)
+
+
+state 40
+
+    (16) kv_list_items -> empty .
+    (6) list_items -> empty .
+
+  ! reduce/reduce conflict for RBRACE resolved using rule 6 (list_items -> empty .)
+    RBRACE          reduce using rule 6 (list_items -> empty .)
+
+  ! RBRACE          [ reduce using rule 16 (kv_list_items -> empty .) ]
+
+
+state 41
+
+    (21) kv -> STRING . COLON all_datatypes
+    (35) basic_datatype -> STRING .
+
+    COLON           shift and go to state 57
+    COMMA           reduce using rule 35 (basic_datatype -> STRING .)
+    RBRACE          reduce using rule 35 (basic_datatype -> STRING .)
+
+
+state 42
+
+    (22) kv -> INT . COLON all_datatypes
+    (33) basic_datatype -> INT .
+
+    COLON           shift and go to state 58
+    COMMA           reduce using rule 33 (basic_datatype -> INT .)
+    RBRACE          reduce using rule 33 (basic_datatype -> INT .)
+
+
+state 43
+
+    (23) comparison_expression -> expression GT expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 23 (comparison_expression -> expression GT expression .)
+    IF              reduce using rule 23 (comparison_expression -> expression GT expression .)
+    INT             reduce using rule 23 (comparison_expression -> expression GT expression .)
+    FLOAT           reduce using rule 23 (comparison_expression -> expression GT expression .)
+    STRING          reduce using rule 23 (comparison_expression -> expression GT expression .)
+    BOOL            reduce using rule 23 (comparison_expression -> expression GT expression .)
+    LBRACKET        reduce using rule 23 (comparison_expression -> expression GT expression .)
+    LPAREN          reduce using rule 23 (comparison_expression -> expression GT expression .)
+    LBRACE          reduce using rule 23 (comparison_expression -> expression GT expression .)
+    $end            reduce using rule 23 (comparison_expression -> expression GT expression .)
+    COLON           reduce using rule 23 (comparison_expression -> expression GT expression .)
+    ELIF            reduce using rule 23 (comparison_expression -> expression GT expression .)
+    ELSE            reduce using rule 23 (comparison_expression -> expression GT expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+  ! LT              [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+  ! EQEQ            [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+  ! NEQ             [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+  ! GE              [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+  ! LE              [ reduce using rule 23 (comparison_expression -> expression GT expression .) ]
+
+
+state 44
+
+    (24) comparison_expression -> expression LT expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 24 (comparison_expression -> expression LT expression .)
+    IF              reduce using rule 24 (comparison_expression -> expression LT expression .)
+    INT             reduce using rule 24 (comparison_expression -> expression LT expression .)
+    FLOAT           reduce using rule 24 (comparison_expression -> expression LT expression .)
+    STRING          reduce using rule 24 (comparison_expression -> expression LT expression .)
+    BOOL            reduce using rule 24 (comparison_expression -> expression LT expression .)
+    LBRACKET        reduce using rule 24 (comparison_expression -> expression LT expression .)
+    LPAREN          reduce using rule 24 (comparison_expression -> expression LT expression .)
+    LBRACE          reduce using rule 24 (comparison_expression -> expression LT expression .)
+    $end            reduce using rule 24 (comparison_expression -> expression LT expression .)
+    COLON           reduce using rule 24 (comparison_expression -> expression LT expression .)
+    ELIF            reduce using rule 24 (comparison_expression -> expression LT expression .)
+    ELSE            reduce using rule 24 (comparison_expression -> expression LT expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+  ! LT              [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+  ! EQEQ            [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+  ! NEQ             [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+  ! GE              [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+  ! LE              [ reduce using rule 24 (comparison_expression -> expression LT expression .) ]
+
+
+state 45
+
+    (25) comparison_expression -> expression EQEQ expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    IF              reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    INT             reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    FLOAT           reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    STRING          reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    BOOL            reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    LBRACKET        reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    LPAREN          reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    LBRACE          reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    $end            reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    COLON           reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    ELIF            reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    ELSE            reduce using rule 25 (comparison_expression -> expression EQEQ expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+  ! LT              [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+  ! EQEQ            [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+  ! NEQ             [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+  ! GE              [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+  ! LE              [ reduce using rule 25 (comparison_expression -> expression EQEQ expression .) ]
+
+
+state 46
+
+    (26) comparison_expression -> expression NEQ expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    IF              reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    INT             reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    FLOAT           reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    STRING          reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    BOOL            reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    LBRACKET        reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    LPAREN          reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    LBRACE          reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    $end            reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    COLON           reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    ELIF            reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    ELSE            reduce using rule 26 (comparison_expression -> expression NEQ expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+  ! LT              [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+  ! EQEQ            [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+  ! NEQ             [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+  ! GE              [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+  ! LE              [ reduce using rule 26 (comparison_expression -> expression NEQ expression .) ]
+
+
+state 47
+
+    (27) comparison_expression -> expression GE expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 27 (comparison_expression -> expression GE expression .)
+    IF              reduce using rule 27 (comparison_expression -> expression GE expression .)
+    INT             reduce using rule 27 (comparison_expression -> expression GE expression .)
+    FLOAT           reduce using rule 27 (comparison_expression -> expression GE expression .)
+    STRING          reduce using rule 27 (comparison_expression -> expression GE expression .)
+    BOOL            reduce using rule 27 (comparison_expression -> expression GE expression .)
+    LBRACKET        reduce using rule 27 (comparison_expression -> expression GE expression .)
+    LPAREN          reduce using rule 27 (comparison_expression -> expression GE expression .)
+    LBRACE          reduce using rule 27 (comparison_expression -> expression GE expression .)
+    $end            reduce using rule 27 (comparison_expression -> expression GE expression .)
+    COLON           reduce using rule 27 (comparison_expression -> expression GE expression .)
+    ELIF            reduce using rule 27 (comparison_expression -> expression GE expression .)
+    ELSE            reduce using rule 27 (comparison_expression -> expression GE expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+  ! LT              [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+  ! EQEQ            [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+  ! NEQ             [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+  ! GE              [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+  ! LE              [ reduce using rule 27 (comparison_expression -> expression GE expression .) ]
+
+
+state 48
+
+    (28) comparison_expression -> expression LE expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+  ! shift/reduce conflict for GT resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NEQ resolved as shift
+  ! shift/reduce conflict for GE resolved as shift
+  ! shift/reduce conflict for LE resolved as shift
+    IDENTIFIER      reduce using rule 28 (comparison_expression -> expression LE expression .)
+    IF              reduce using rule 28 (comparison_expression -> expression LE expression .)
+    INT             reduce using rule 28 (comparison_expression -> expression LE expression .)
+    FLOAT           reduce using rule 28 (comparison_expression -> expression LE expression .)
+    STRING          reduce using rule 28 (comparison_expression -> expression LE expression .)
+    BOOL            reduce using rule 28 (comparison_expression -> expression LE expression .)
+    LBRACKET        reduce using rule 28 (comparison_expression -> expression LE expression .)
+    LPAREN          reduce using rule 28 (comparison_expression -> expression LE expression .)
+    LBRACE          reduce using rule 28 (comparison_expression -> expression LE expression .)
+    $end            reduce using rule 28 (comparison_expression -> expression LE expression .)
+    COLON           reduce using rule 28 (comparison_expression -> expression LE expression .)
+    ELIF            reduce using rule 28 (comparison_expression -> expression LE expression .)
+    ELSE            reduce using rule 28 (comparison_expression -> expression LE expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+  ! GT              [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+  ! LT              [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+  ! EQEQ            [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+  ! NEQ             [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+  ! GE              [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+  ! LE              [ reduce using rule 28 (comparison_expression -> expression LE expression .) ]
+
+
+state 49
+
+    (17) data_declaration -> IDENTIFIER EQUALS expression .
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+    IDENTIFIER      reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    IF              reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    INT             reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    FLOAT           reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    STRING          reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    BOOL            reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    LBRACKET        reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    LPAREN          reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    LBRACE          reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    $end            reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    ELIF            reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    ELSE            reduce using rule 17 (data_declaration -> IDENTIFIER EQUALS expression .)
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+
+state 50
+
+    (3) if_statement -> IF expression COLON . statements elif_else_block
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 4
+    statements                     shift and go to state 59
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 51
+
+    (29) list -> LBRACKET list_items RBRACKET .
+
+    GT              reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    LT              reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    EQEQ            reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    NEQ             reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    GE              reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    LE              reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    IDENTIFIER      reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    IF              reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    INT             reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    FLOAT           reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    STRING          reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    BOOL            reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    LBRACKET        reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    LPAREN          reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    LBRACE          reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    $end            reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    COLON           reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    COMMA           reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    RBRACKET        reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    RPAREN          reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    RBRACE          reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    ELIF            reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+    ELSE            reduce using rule 29 (list -> LBRACKET list_items RBRACKET .)
+
+
+state 52
+
+    (4) list_items -> all_datatypes COMMA . list_items
+    (4) list_items -> . all_datatypes COMMA list_items
+    (5) list_items -> . all_datatypes
+    (6) list_items -> . empty
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (7) empty -> .
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    RBRACKET        reduce using rule 7 (empty -> .)
+    RPAREN          reduce using rule 7 (empty -> .)
+    RBRACE          reduce using rule 7 (empty -> .)
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    all_datatypes                  shift and go to state 34
+    list_items                     shift and go to state 60
+    empty                          shift and go to state 35
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 53
+
+    (30) tuple -> LPAREN list_items RPAREN .
+
+    GT              reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    LT              reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    EQEQ            reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    NEQ             reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    GE              reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    LE              reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    IDENTIFIER      reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    IF              reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    INT             reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    FLOAT           reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    STRING          reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    BOOL            reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    LBRACKET        reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    LPAREN          reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    LBRACE          reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    $end            reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    COLON           reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    COMMA           reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    RBRACKET        reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    RPAREN          reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    RBRACE          reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    ELIF            reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+    ELSE            reduce using rule 30 (tuple -> LPAREN list_items RPAREN .)
+
+
+state 54
+
+    (32) dict -> LBRACE kv_list_items RBRACE .
+
+    GT              reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    LT              reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    EQEQ            reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    NEQ             reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    GE              reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    LE              reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    IDENTIFIER      reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    IF              reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    INT             reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    FLOAT           reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    STRING          reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    BOOL            reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    LBRACKET        reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    LPAREN          reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    LBRACE          reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    $end            reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    COLON           reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    COMMA           reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    RBRACKET        reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    RPAREN          reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    RBRACE          reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    ELIF            reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+    ELSE            reduce using rule 32 (dict -> LBRACE kv_list_items RBRACE .)
+
+
+state 55
+
+    (31) set -> LBRACE list_items RBRACE .
+
+    GT              reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    LT              reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    EQEQ            reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    NEQ             reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    GE              reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    LE              reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    IDENTIFIER      reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    IF              reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    INT             reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    FLOAT           reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    STRING          reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    BOOL            reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    LBRACKET        reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    LPAREN          reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    LBRACE          reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    $end            reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    COLON           reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    COMMA           reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    RBRACKET        reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    RPAREN          reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    RBRACE          reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    ELIF            reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+    ELSE            reduce using rule 31 (set -> LBRACE list_items RBRACE .)
+
+
+state 56
+
+    (14) kv_list_items -> kv COMMA . kv_list_items
+    (14) kv_list_items -> . kv COMMA kv_list_items
+    (15) kv_list_items -> . kv
+    (16) kv_list_items -> . empty
+    (21) kv -> . STRING COLON all_datatypes
+    (22) kv -> . INT COLON all_datatypes
+    (7) empty -> .
+
+    STRING          shift and go to state 63
+    INT             shift and go to state 64
+    RBRACE          reduce using rule 7 (empty -> .)
+
+    kv                             shift and go to state 39
+    kv_list_items                  shift and go to state 61
+    empty                          shift and go to state 62
+
+state 57
+
+    (21) kv -> STRING COLON . all_datatypes
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    all_datatypes                  shift and go to state 65
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 58
+
+    (22) kv -> INT COLON . all_datatypes
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    all_datatypes                  shift and go to state 66
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 59
+
+    (3) if_statement -> IF expression COLON statements . elif_else_block
+    (2) statements -> statements . statement
+    (8) elif_else_block -> . ELIF expression COLON statements elif_else_block
+    (9) elif_else_block -> . ELSE COLON statements
+    (10) elif_else_block -> . empty
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (7) empty -> .
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+  ! shift/reduce conflict for ELIF resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for BOOL resolved as shift
+  ! shift/reduce conflict for LBRACKET resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for LBRACE resolved as shift
+    ELIF            shift and go to state 68
+    ELSE            shift and go to state 69
+    $end            reduce using rule 7 (empty -> .)
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+  ! ELIF            [ reduce using rule 7 (empty -> .) ]
+  ! ELSE            [ reduce using rule 7 (empty -> .) ]
+  ! IDENTIFIER      [ reduce using rule 7 (empty -> .) ]
+  ! IF              [ reduce using rule 7 (empty -> .) ]
+  ! INT             [ reduce using rule 7 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 7 (empty -> .) ]
+  ! STRING          [ reduce using rule 7 (empty -> .) ]
+  ! BOOL            [ reduce using rule 7 (empty -> .) ]
+  ! LBRACKET        [ reduce using rule 7 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 7 (empty -> .) ]
+  ! LBRACE          [ reduce using rule 7 (empty -> .) ]
+
+    expression                     shift and go to state 4
+    elif_else_block                shift and go to state 67
+    statement                      shift and go to state 23
+    empty                          shift and go to state 70
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 60
+
+    (4) list_items -> all_datatypes COMMA list_items .
+
+    RBRACKET        reduce using rule 4 (list_items -> all_datatypes COMMA list_items .)
+    RPAREN          reduce using rule 4 (list_items -> all_datatypes COMMA list_items .)
+    RBRACE          reduce using rule 4 (list_items -> all_datatypes COMMA list_items .)
+
+
+state 61
+
+    (14) kv_list_items -> kv COMMA kv_list_items .
+
+    RBRACE          reduce using rule 14 (kv_list_items -> kv COMMA kv_list_items .)
+
+
+state 62
+
+    (16) kv_list_items -> empty .
+
+    RBRACE          reduce using rule 16 (kv_list_items -> empty .)
+
+
+state 63
+
+    (21) kv -> STRING . COLON all_datatypes
+
+    COLON           shift and go to state 57
+
+
+state 64
+
+    (22) kv -> INT . COLON all_datatypes
+
+    COLON           shift and go to state 58
+
+
+state 65
+
+    (21) kv -> STRING COLON all_datatypes .
+
+    COMMA           reduce using rule 21 (kv -> STRING COLON all_datatypes .)
+    RBRACE          reduce using rule 21 (kv -> STRING COLON all_datatypes .)
+
+
+state 66
+
+    (22) kv -> INT COLON all_datatypes .
+
+    COMMA           reduce using rule 22 (kv -> INT COLON all_datatypes .)
+    RBRACE          reduce using rule 22 (kv -> INT COLON all_datatypes .)
+
+
+state 67
+
+    (3) if_statement -> IF expression COLON statements elif_else_block .
+
+    IDENTIFIER      reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    IF              reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    INT             reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    FLOAT           reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    STRING          reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    BOOL            reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    LBRACKET        reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    LPAREN          reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    LBRACE          reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    $end            reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    ELIF            reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+    ELSE            reduce using rule 3 (if_statement -> IF expression COLON statements elif_else_block .)
+
+
+state 68
+
+    (8) elif_else_block -> ELIF . expression COLON statements elif_else_block
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 32
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 71
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 69
+
+    (9) elif_else_block -> ELSE . COLON statements
+
+    COLON           shift and go to state 72
+
+
+state 70
+
+    (10) elif_else_block -> empty .
+
+    ELIF            reduce using rule 10 (elif_else_block -> empty .)
+    ELSE            reduce using rule 10 (elif_else_block -> empty .)
+    IDENTIFIER      reduce using rule 10 (elif_else_block -> empty .)
+    IF              reduce using rule 10 (elif_else_block -> empty .)
+    INT             reduce using rule 10 (elif_else_block -> empty .)
+    FLOAT           reduce using rule 10 (elif_else_block -> empty .)
+    STRING          reduce using rule 10 (elif_else_block -> empty .)
+    BOOL            reduce using rule 10 (elif_else_block -> empty .)
+    LBRACKET        reduce using rule 10 (elif_else_block -> empty .)
+    LPAREN          reduce using rule 10 (elif_else_block -> empty .)
+    LBRACE          reduce using rule 10 (elif_else_block -> empty .)
+    $end            reduce using rule 10 (elif_else_block -> empty .)
+
+
+state 71
+
+    (8) elif_else_block -> ELIF expression . COLON statements elif_else_block
+    (23) comparison_expression -> expression . GT expression
+    (24) comparison_expression -> expression . LT expression
+    (25) comparison_expression -> expression . EQEQ expression
+    (26) comparison_expression -> expression . NEQ expression
+    (27) comparison_expression -> expression . GE expression
+    (28) comparison_expression -> expression . LE expression
+
+    COLON           shift and go to state 73
+    GT              shift and go to state 24
+    LT              shift and go to state 25
+    EQEQ            shift and go to state 26
+    NEQ             shift and go to state 27
+    GE              shift and go to state 28
+    LE              shift and go to state 29
+
+
+state 72
+
+    (9) elif_else_block -> ELSE COLON . statements
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    statements                     shift and go to state 74
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 73
+
+    (8) elif_else_block -> ELIF expression COLON . statements elif_else_block
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+    expression                     shift and go to state 4
+    statements                     shift and go to state 75
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 74
+
+    (9) elif_else_block -> ELSE COLON statements .
+    (2) statements -> statements . statement
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for BOOL resolved as shift
+  ! shift/reduce conflict for LBRACKET resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for LBRACE resolved as shift
+    ELIF            reduce using rule 9 (elif_else_block -> ELSE COLON statements .)
+    ELSE            reduce using rule 9 (elif_else_block -> ELSE COLON statements .)
+    $end            reduce using rule 9 (elif_else_block -> ELSE COLON statements .)
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+  ! IDENTIFIER      [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! IF              [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! INT             [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! FLOAT           [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! STRING          [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! BOOL            [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! LBRACKET        [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! LPAREN          [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+  ! LBRACE          [ reduce using rule 9 (elif_else_block -> ELSE COLON statements .) ]
+
+    statement                      shift and go to state 23
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 75
+
+    (8) elif_else_block -> ELIF expression COLON statements . elif_else_block
+    (2) statements -> statements . statement
+    (8) elif_else_block -> . ELIF expression COLON statements elif_else_block
+    (9) elif_else_block -> . ELSE COLON statements
+    (10) elif_else_block -> . empty
+    (11) statement -> . data_declaration
+    (12) statement -> . expression
+    (13) statement -> . if_statement
+    (7) empty -> .
+    (17) data_declaration -> . IDENTIFIER EQUALS expression
+    (18) expression -> . IDENTIFIER
+    (19) expression -> . all_datatypes
+    (20) expression -> . comparison_expression
+    (3) if_statement -> . IF expression COLON statements elif_else_block
+    (37) all_datatypes -> . collection
+    (38) all_datatypes -> . basic_datatype
+    (23) comparison_expression -> . expression GT expression
+    (24) comparison_expression -> . expression LT expression
+    (25) comparison_expression -> . expression EQEQ expression
+    (26) comparison_expression -> . expression NEQ expression
+    (27) comparison_expression -> . expression GE expression
+    (28) comparison_expression -> . expression LE expression
+    (39) collection -> . list
+    (40) collection -> . tuple
+    (41) collection -> . dict
+    (42) collection -> . set
+    (33) basic_datatype -> . INT
+    (34) basic_datatype -> . FLOAT
+    (35) basic_datatype -> . STRING
+    (36) basic_datatype -> . BOOL
+    (29) list -> . LBRACKET list_items RBRACKET
+    (30) tuple -> . LPAREN list_items RPAREN
+    (32) dict -> . LBRACE kv_list_items RBRACE
+    (31) set -> . LBRACE list_items RBRACE
+
+  ! shift/reduce conflict for ELIF resolved as shift
+  ! shift/reduce conflict for ELSE resolved as shift
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for BOOL resolved as shift
+  ! shift/reduce conflict for LBRACKET resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+  ! shift/reduce conflict for LBRACE resolved as shift
+    ELIF            shift and go to state 68
+    ELSE            shift and go to state 69
+    $end            reduce using rule 7 (empty -> .)
+    IDENTIFIER      shift and go to state 6
+    IF              shift and go to state 9
+    INT             shift and go to state 16
+    FLOAT           shift and go to state 17
+    STRING          shift and go to state 18
+    BOOL            shift and go to state 19
+    LBRACKET        shift and go to state 20
+    LPAREN          shift and go to state 21
+    LBRACE          shift and go to state 22
+
+  ! ELIF            [ reduce using rule 7 (empty -> .) ]
+  ! ELSE            [ reduce using rule 7 (empty -> .) ]
+  ! IDENTIFIER      [ reduce using rule 7 (empty -> .) ]
+  ! IF              [ reduce using rule 7 (empty -> .) ]
+  ! INT             [ reduce using rule 7 (empty -> .) ]
+  ! FLOAT           [ reduce using rule 7 (empty -> .) ]
+  ! STRING          [ reduce using rule 7 (empty -> .) ]
+  ! BOOL            [ reduce using rule 7 (empty -> .) ]
+  ! LBRACKET        [ reduce using rule 7 (empty -> .) ]
+  ! LPAREN          [ reduce using rule 7 (empty -> .) ]
+  ! LBRACE          [ reduce using rule 7 (empty -> .) ]
+
+    expression                     shift and go to state 4
+    elif_else_block                shift and go to state 76
+    statement                      shift and go to state 23
+    empty                          shift and go to state 70
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    all_datatypes                  shift and go to state 7
+    comparison_expression          shift and go to state 8
+    collection                     shift and go to state 10
+    basic_datatype                 shift and go to state 11
+    list                           shift and go to state 12
+    tuple                          shift and go to state 13
+    dict                           shift and go to state 14
+    set                            shift and go to state 15
+
+state 76
+
+    (8) elif_else_block -> ELIF expression COLON statements elif_else_block .
+
+    ELIF            reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    ELSE            reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    IDENTIFIER      reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    IF              reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    INT             reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    FLOAT           reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    STRING          reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    BOOL            reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    LBRACKET        reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    LPAREN          reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    LBRACE          reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+    $end            reduce using rule 8 (elif_else_block -> ELIF expression COLON statements elif_else_block .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for GT in state 43 resolved as shift
+WARNING: shift/reduce conflict for LT in state 43 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 43 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 43 resolved as shift
+WARNING: shift/reduce conflict for GE in state 43 resolved as shift
+WARNING: shift/reduce conflict for LE in state 43 resolved as shift
+WARNING: shift/reduce conflict for GT in state 44 resolved as shift
+WARNING: shift/reduce conflict for LT in state 44 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 44 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 44 resolved as shift
+WARNING: shift/reduce conflict for GE in state 44 resolved as shift
+WARNING: shift/reduce conflict for LE in state 44 resolved as shift
+WARNING: shift/reduce conflict for GT in state 45 resolved as shift
+WARNING: shift/reduce conflict for LT in state 45 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 45 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 45 resolved as shift
+WARNING: shift/reduce conflict for GE in state 45 resolved as shift
+WARNING: shift/reduce conflict for LE in state 45 resolved as shift
+WARNING: shift/reduce conflict for GT in state 46 resolved as shift
+WARNING: shift/reduce conflict for LT in state 46 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 46 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 46 resolved as shift
+WARNING: shift/reduce conflict for GE in state 46 resolved as shift
+WARNING: shift/reduce conflict for LE in state 46 resolved as shift
+WARNING: shift/reduce conflict for GT in state 47 resolved as shift
+WARNING: shift/reduce conflict for LT in state 47 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 47 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 47 resolved as shift
+WARNING: shift/reduce conflict for GE in state 47 resolved as shift
+WARNING: shift/reduce conflict for LE in state 47 resolved as shift
+WARNING: shift/reduce conflict for GT in state 48 resolved as shift
+WARNING: shift/reduce conflict for LT in state 48 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 48 resolved as shift
+WARNING: shift/reduce conflict for NEQ in state 48 resolved as shift
+WARNING: shift/reduce conflict for GE in state 48 resolved as shift
+WARNING: shift/reduce conflict for LE in state 48 resolved as shift
+WARNING: shift/reduce conflict for ELIF in state 59 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 59 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 59 resolved as shift
+WARNING: shift/reduce conflict for IF in state 59 resolved as shift
+WARNING: shift/reduce conflict for INT in state 59 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 59 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 59 resolved as shift
+WARNING: shift/reduce conflict for BOOL in state 59 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 59 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 59 resolved as shift
+WARNING: shift/reduce conflict for LBRACE in state 59 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 74 resolved as shift
+WARNING: shift/reduce conflict for IF in state 74 resolved as shift
+WARNING: shift/reduce conflict for INT in state 74 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 74 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 74 resolved as shift
+WARNING: shift/reduce conflict for BOOL in state 74 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 74 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 74 resolved as shift
+WARNING: shift/reduce conflict for LBRACE in state 74 resolved as shift
+WARNING: shift/reduce conflict for ELIF in state 75 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 75 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 75 resolved as shift
+WARNING: shift/reduce conflict for IF in state 75 resolved as shift
+WARNING: shift/reduce conflict for INT in state 75 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 75 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 75 resolved as shift
+WARNING: shift/reduce conflict for BOOL in state 75 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 75 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 75 resolved as shift
+WARNING: shift/reduce conflict for LBRACE in state 75 resolved as shift
+WARNING: reduce/reduce conflict in state 40 resolved using rule (list_items -> empty)
+WARNING: rejected rule (kv_list_items -> empty) in state 40
